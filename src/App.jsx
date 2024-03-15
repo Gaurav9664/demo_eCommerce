@@ -36,20 +36,20 @@ function App() {
       SNUM: snum
     })
 
-    axios
-      .post("http://localhost:5000/api/v1/customer/create-customer",
-        {
-          "cname": cname,
-          "city": city,
-          "rating": rating,
-          "snum": snum
-        },
-        {
-          headers: {
-            "Content-Type": "application/json"
-          }
-        }
-      )
+    // axios
+    //   .post("http://localhost:5000/api/v1/customer/create-customer",
+    //     {
+    //       "cname": cname,
+    //       "city": city,
+    //       "rating": rating,
+    //       "snum": snum
+    //     },
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json"
+    //       }
+    //     }
+    //   )
 
 
     if (data) {
@@ -85,7 +85,7 @@ function App() {
             <th>SNUM</th>
           </tr>
           {
-            customer.map((v, i) => (
+            customerData?.data?.data?.map((v, i) => (
               <tr>
                 <td>{v.CNUM}</td>
                 <td>{v.CNAME}</td>
