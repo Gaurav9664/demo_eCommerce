@@ -36,8 +36,20 @@ function App() {
     })
 
     axios
-      .post("http://localhost:5000/api/v1/customer/create-customer", data)
-      
+      .post("http://localhost:5000/api/v1/customer/create-customer",
+        {
+          "cname": cname,
+          "city": city,
+          "rating": rating,
+          "snum": snum
+        },
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+
 
     if (data) {
       console.log("GGG", data);
