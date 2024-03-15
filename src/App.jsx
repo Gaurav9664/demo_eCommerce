@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import './App.css'
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCustomer } from './redux/action/customer.action';
 
 function App() {
+
+  const dispatch = useDispatch();
 
   const [customer, setCustomer] = useState([])
   const [cname, setCname] = useState()
@@ -10,6 +14,9 @@ function App() {
   const [rating, setRating] = useState()
   const [snum, setSnum] = useState()
   const [data, setData] = useState({})
+  const customerData = useSelector((state) => state.customer);
+
+  console.log(customerData);
 
   // const customerAPI = () => {
   //   fetchgetCustomer()
@@ -17,14 +24,8 @@ function App() {
   //     .catch((error) => console.log(error.message))
   // }
 
-
-
-
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/v1/customer/get-customer")
-      .then((res) => setCustomer(res.data.data[0]))
-      .catch((error) => error.message)
+    dispatch(getCustomer())
   }, [])
 
   const btnSubmit = () => {
