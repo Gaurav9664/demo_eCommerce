@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css'
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCustomer } from './redux/action/customer.action';
+import { getCustomer, postCustomer } from './redux/action/customer.action';
 
 function App() {
 
@@ -29,36 +29,17 @@ function App() {
   }, [])
 
   const btnSubmit = () => {
-    setData({
-      CNAE: cname,
-      CITY: city,
-      RATING: rating,
-      SNUM: snum
-    })
 
-    // axios
-    //   .post("http://localhost:5000/api/v1/customer/create-customer",
-    //     {
-    //       "cname": cname,
-    //       "city": city,
-    //       "rating": rating,
-    //       "snum": snum
-    //     },
-    //     {
-    //       headers: {
-    //         "Content-Type": "application/json"
-    //       }
-    //     }
-    //   )
-
-
-    if (data) {
-      console.log("GGG", data);
+    let data = {
+      "CNAME": cname,
+      "CITY": city,
+      "RATING": rating,
+      "SNUM": snum
     }
 
+    dispatch(postCustomer(data))
+
     console.log(cname, city, rating, snum);
-
-
 
     event.preventDefault();
   }
@@ -83,6 +64,7 @@ function App() {
             <th>CITY</th>
             <th>RATING</th>
             <th>SNUM</th>
+            <th>Active</th>
           </tr>
           {
             customerData?.data?.data?.map((v, i) => (
@@ -92,6 +74,7 @@ function App() {
                 <td>{v.CITY}</td>
                 <td>{v.RATING}</td>
                 <td>{v.SNUM}</td>
+                <td>{v.IsActive == 1 ? 'true' : 'false'}</td>
               </tr>
 
 

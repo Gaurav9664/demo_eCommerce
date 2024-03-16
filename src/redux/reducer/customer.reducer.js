@@ -14,6 +14,11 @@ export const customerReducer = (state = initialState, action) => {
                 ...state,
                 data: action.payload
             }
+        case ActionTypes.ADD_CUSTOMER:
+            return {
+                ...state,
+                data: state.data.concat(action.payload) 
+            }
         default:
             return state
     }

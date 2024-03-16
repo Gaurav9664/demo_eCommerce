@@ -42,10 +42,9 @@ export const addrequest = (path, data) => {
     return sendRequest({
         method: 'POST',
         url: path,
-        data: JSON.stringify(data),
+        data: data,
         headers: {
-            'content-type': 'application/json',
-            'Accept': '*/*'
+            'content-type': 'application/json'
         }
     })
 }
