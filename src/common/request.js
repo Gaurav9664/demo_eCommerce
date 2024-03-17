@@ -58,9 +58,9 @@ export const deleterequest = (path, id) => {
 }
 
 export const editrequest = (path, data) => {
-    console.log(data);
+    console.log(path, data);
     return sendRequest({
-        method: 'POST',
+        method: 'PUT',
         url: path,
         data: JSON.stringify(data),
         headers: {

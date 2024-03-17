@@ -7,7 +7,8 @@ const initialState = {
 }
 
 export const customerReducer = (state = initialState, action) => {
-
+    console.log(state);
+    console.log(action.payload);
     switch (action.type) {
         case ActionTypes.GET_CUSTOMER:
             return {
@@ -17,7 +18,17 @@ export const customerReducer = (state = initialState, action) => {
         case ActionTypes.ADD_CUSTOMER:
             return {
                 ...state,
-                data: state.data.concat(action.payload) 
+                data: action.payload
+            }
+        case ActionTypes.DELETE_CUSTOMER:
+            return {
+                ...state,
+                data: action.payload
+            }
+        case ActionTypes.PUT_CUSTOMER:
+            return {
+                ...state,
+                data: action.payload
             }
         default:
             return state
