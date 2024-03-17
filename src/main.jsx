@@ -6,6 +6,7 @@ import { store } from './redux/store.js'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Customer from './component/Customer.jsx';
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Provider store={store}>
