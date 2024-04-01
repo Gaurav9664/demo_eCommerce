@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteCustomer, getCustomer, postCustomer, updateCustomer } from '../redux/action/customer.action';
 import { Container, Card, Col, Row, Table, Form } from 'react-bootstrap';
 import { useFormik } from 'formik';
+import { Link } from 'react-router-dom';
 
 function Customer() {
 
@@ -85,6 +86,13 @@ function Customer() {
 
   return (
     <Container>
+      <Link to={"/category"}>
+        <button>
+          Category
+        </button>
+      </Link>
+      <br />
+      <br />
       <form onSubmit={handleSubmit}>
         <Form.Control
           placeholder="Customer CNAME"
